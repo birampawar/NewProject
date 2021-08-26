@@ -27,7 +27,8 @@ body{
     height: 50px;
     background: #FFFFFF;
     border-radius: 10px;
-    margin-top: 47px;
+    
+    margin-bottom: 45px;
     border: none;
     padding-left: 20px;
 }
@@ -41,15 +42,15 @@ body{
     font-weight: bolder;
     padding: 0%;
     border-radius: 10px;
-    margin-top: 47px;
+    margin-bottom: 45px;
     border: none;
     transition: 0.2s;
 }
 
 .btnsubmit:hover{
     box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.25);
-    margin-top: 45px;
-    margin-bottom: 2px;
+    margin-top: -2px;
+    
 }
 
 form,.search{
@@ -95,22 +96,20 @@ a{
     
 }
 .tabs{
-    background-repeat: no-repeat;
-    background-size: contain; 
-    margin: 20px;
-    border-radius: 30px;
+    background-color:dodgerblue;
+    width: 150px;
+    height: 30px;
+    margin-bottom: 20px;
+    border-radius: 10px;
     border: none;
     transition: 0.2s;
+    color: white;
+    border: solid 2px white;
 }
 .adashboard{
     text-align: center;
-    margin-top: 10%;
 }
-.icons{
-    width: 200px;
-    height: 200px;
-    border-radius: 30px;
-}
+
 
 .tabs:hover{
     scale: 1.02;

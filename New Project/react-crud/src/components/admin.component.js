@@ -13,13 +13,13 @@ export default class Admin extends Component {
     this.onShowList = this.onShowList.bind(this);
 
     this.state = {
-      status:false
+      status:true
     };
   } 
   
   onAddHR(e)
   {
-    console.log("In add hr",this.state.status)
+    console.log("In add hr")
     this.setState({
       status : false
     })
@@ -27,6 +27,7 @@ export default class Admin extends Component {
   
   onShowList(e)
   {
+    console.log("In add hr")
     this.setState({
       status:true
     })
@@ -44,9 +45,8 @@ export default class Admin extends Component {
             {/* Main Content */}
             <div className="container adashboard">
               {/* <BrowserRouter> */}
-                <button  className="tabs" onclick = {this.onShowList}><img className="icons" src={usericon} alt=""></img> </button> 
-                <button className="tabs" onclick = {this.onAddHR}><img className="icons" src={listicon} alt=""></img></button>
-
+                <button className="tabs" onClick={this.onAddHR}>List</button>
+                <button className="tabs" onClick={this.onShowList}>Add</button>
                 {this.state.status ?  <AddHr /> : <Search propObj="Admin"/>}
                 
             </div>

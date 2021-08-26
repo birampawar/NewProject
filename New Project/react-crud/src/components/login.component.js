@@ -121,6 +121,7 @@ export default class Login extends Component {
               </div>
               <input className="btnsubmit" onClick={this.saveUser} type="submit" value="Submit" />
               <a href="#">Forgot password ?</a>
+              <a href="#">Dont have an account??..Sign up</a>
           {/* </form> */}
       </div>
       
