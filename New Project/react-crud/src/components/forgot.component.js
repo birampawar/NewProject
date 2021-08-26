@@ -14,15 +14,17 @@ export default class Forgot extends Component {
                 crossorigin="anonymous"
             />
             {/* Main Content */}
+           
             <div className="search" >
-                <input className="small" type="email" name="email" id="email" placeholder="Enter your email address"></input>
-                <input className="small btnsubmit" type="submit" value="Send OTP"></input>
-                <input className="small" type="number" name="OTP" id="OTP" placeholder="Enter the OTP you received in email"></input>
-                <input className="small btnsubmit" type="submit" value="Verify"></input>
-                <input className="small" type="password" name="password" id="password" placeholder="password"></input>
-                <input className="small" type="password" name="conpassword" id="conpassword" placeholder="Confirm Password"></input>
-                <input className="small btnsubmit" onclick="matchPassword()" type="submit" value="RESET"></input>
+                <input required className="small" type="email" name="email" id="email" placeholder="Enter your email address"></input>
+                <input required className="small btnsubmit" type="submit" value="Send OTP"></input>
+                <input required className="small" type="number" name="OTP" maxLength="4" id="OTP" placeholder="Enter the OTP you received in email"></input>
+                <input required className="small btnsubmit" type="submit" value="Verify"></input>
+                <input required className="small" type="password" minLength="6" name="password" id="password" placeholder="password"></input>
+                <input required className="small" type="password" minLength="6" name="conpassword" id="conpassword" placeholder="Confirm Password"></input>
+                <input required className="small btnsubmit" onclick="matchPassword()" type="submit" value="RESET"></input>
             </div>
+            
         </div>
         
     )

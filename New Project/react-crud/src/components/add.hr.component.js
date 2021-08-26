@@ -85,9 +85,10 @@ export default class AddHr extends Component {
                 crossorigin="anonymous"
             />
             {/* Main Content */}
+           
             <div className="search" >
                 <input class="small" 
-                type="text" 
+                type="text" required
                 value={this.state.UserName}
                 name="UserName" 
                 id="UserName" 
@@ -95,18 +96,22 @@ export default class AddHr extends Component {
                 placeholder="Username"></input>
                 <input class="small" 
                 type="password" 
+                required
                 value={this.state.Password} 
                 name="Password" 
                 id="Password"
                 onChange={this.onChangePassword}
                 placeholder="Password"></input>
+
                 <input class="small" 
                 type="text" 
                 value={this.state.Domain} 
                 name="Domain" 
                 id="Domain" 
+                required
                 onChange={this.onChangeDomain}
                 placeholder="Domain"></input>
+                
                 <input class="small btnsubmit" 
                 type="submit" 
                 onClick={this.saveUser}
@@ -114,6 +119,7 @@ export default class AddHr extends Component {
             </div>
             
         </div>
+        
         
     )
 

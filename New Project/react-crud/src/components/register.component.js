@@ -94,36 +94,41 @@ export default class Register extends Component {
                 crossorigin="anonymous"
             />
             {/* Main Content */}
+         
             <div className="search" >
-                {/* <form action= "/register"  method="POST"> */}
+              
                     <input className="small" 
                     align="center" 
+                    required
                     type="text" 
                     value={this.state.UserName}
                     onChange={this.onChangeUserName}
                     name="UserName" 
                     id="UserName" placeholder="Username"/>
+
                     <input className="small" 
                     type="password" 
+                    required
                     value={this.state.Password} 
                     name="Password" 
-                    id="Password" 
+                    id="Password" minLength="6"
                     placeholder="password" 
                     onChange={this.onChangePassword}/>
+
                     <input className="small" 
-                    type="password" 
+                    type="password" required
                     value={this.state.retypePassword} 
                     name="retypePassword" 
-                    id="retypePassword" 
+                    id="retypePassword" minLength="6"
                     placeholder="retypepassword" 
                     onChange={this.onChangeretypePassword}/>
                     <input className="btnsubmit" onClick={this.saveUser} type="submit" value="Submit" /><br/>
-                    <lable>Already Registered? Login Here</lable>
-                    <button className="btn btn-primary">Login</button>  
+                    <lable>Already Registered? <a href="#" > Login Here</a></lable>  
                     <br />
 
-                {/* </form> */}
+                
             </div>
+          
             
         </div>
         

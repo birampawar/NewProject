@@ -36,8 +36,7 @@ class App extends Component {
     return (
         <div className="container mt-3">
           <Header />
-          <Admin/>
-         {/* {this.state.Type === "employee" ? <Update propobj={this.state.EMPID} /> : this.state.Type === "HR" ? <Search propObj={this.state.Type}/> : this.state.Type === "Admin" ? <Admin propObj={this.state.Type}/> : <Login handleChange = {this.handleChange}/> } */}
+         {this.state.Type === "employee" ? <Update propobj={this.state.EMPID} /> : this.state.Type === "HR" ? <Search propObj={this.state.Type}/> : this.state.Type === "Admin" ? <Admin propObj={this.state.Type}/> : <Login handleChange = {this.handleChange}/> }
               
                               {/* {this.state.Type ==="employee" ? <Update propobj={this.state.EMPID} />:<Login />}
           {/* { this.state.isLogin ? <Login /> : <Register handleChange = {this.handleChange }/>} */}

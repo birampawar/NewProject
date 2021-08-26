@@ -176,7 +176,7 @@ export default class Update extends Component {
             <center>
             <div className="updatepanel" >
               <div class="mb-3 row">
-                <label for="inputPassword" class="col-sm-2 col-form-label"><i class="fa fa-user fa-2x" aria-hidden="true"></i></label>
+                <label for="UserName" class="col-sm-2 col-form-label"><i class="fa fa-user fa-2x" aria-hidden="true"></i></label>
                 <div class="col-sm-10">
                   <input type="text" 
                   class="prop" 
@@ -188,7 +188,7 @@ export default class Update extends Component {
                 </div>
               </div>
               <div class="mb-3 row">
-                <label for="inputPassword" class="col-sm-2 col-form-label"><i class="fa fa-envelope fa-2x" aria-hidden="true"></i></label>
+                <label for="EmailId" class="col-sm-2 col-form-label"><i class="fa fa-envelope fa-2x" aria-hidden="true"></i></label>
                 <div class="col-sm-10">
                   <input 
                   type="email" 
@@ -206,7 +206,7 @@ export default class Update extends Component {
                 </div>
               </div> */}
               <div class="mb-3 row">
-                <label for="inputPassword" class="col-sm-2 col-form-label"><i class="fa fa-slack fa-2x" aria-hidden="true"></i></label>
+                <label for="Tools" class="col-sm-2 col-form-label"><i class="fa fa-slack fa-2x" aria-hidden="true"></i></label>
                 <div class="col-sm-10">
                   <input 
                   type="text" 
@@ -218,7 +218,7 @@ export default class Update extends Component {
                 </div>
               </div>
               <div class="mb-3 row">
-                <label for="inputPassword" class="col-sm-2 col-form-label"><i class="fa fa-cogs fa-2x" aria-hidden="true"></i></label>
+                <label for="Domain" class="col-sm-2 col-form-label"><i class="fa fa-cogs fa-2x" aria-hidden="true"></i></label>
                 <div class="col-sm-10">
                   <input 
                   type="text" 
@@ -230,7 +230,7 @@ export default class Update extends Component {
                 </div>
               </div>
               <div class="mb-3 row">
-                <label for="inputPassword" class="col-sm-2 col-form-label"><i class="fa fa-area-chart fa-2x" aria-hidden="true"></i></label>
+                <label for="Skillsets" class="col-sm-2 col-form-label"><i class="fa fa-area-chart fa-2x" aria-hidden="true"></i></label>
                 <div class="col-sm-10">
                   <input 
                   type="text" 
@@ -242,7 +242,7 @@ export default class Update extends Component {
                 </div>
               </div>
               <div class="mb-3 row">
-                <label for="inputPassword" class="col-sm-2 col-form-label"><i class="fa fa-flask fa-2x" aria-hidden="true"></i></label>
+                <label for="Experience" class="col-sm-2 col-form-label"><i class="fa fa-flask fa-2x" aria-hidden="true"></i></label>
                 <div class="col-sm-10">
                   <input 
                   type="text" 

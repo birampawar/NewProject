@@ -90,13 +90,14 @@ export default class Login extends Component {
               value= {this.state.UserName}
               name="UserName" 
               id="username" 
+              required
               placeholder="Username" 
               onChange={this.onChangeUserName}/>
               <input className="small" 
               type="password" 
               value={this.state.Password} 
               name="Password" 
-              id="password" 
+              id="password" minLength="6"
               placeholder="password" 
               onChange={this.onChangePassword}/>    
               <div className="check">
@@ -119,7 +120,7 @@ export default class Login extends Component {
                   onChange={(e) =>{this.setState({selectedOption:e.target.value})}}
                   ></input> Admin
               </div>
-              <input className="btnsubmit" onClick={this.saveUser} type="submit" value="Submit" />
+              <input className="btnsubmit" required onClick={this.saveUser} type="submit" value="Submit" />
               <a href="#">Forgot password ?</a>
               <a href="#">Dont have an account??..Sign up</a>
           {/* </form> */}
