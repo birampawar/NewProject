@@ -4,7 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 import Register from "./components/register.component";
-import Employee from "./components/employee.component";
 import Login from "./components/login.component"
 import Search from "./components/search.component"
 import Admin from "./components/admin.component"
@@ -37,8 +36,9 @@ class App extends Component {
     return (
         <div className="container mt-3">
           <Header />
+          <Forgot/>
           {/* <Home/> */}
-         {this.state.Type === "employee" ? <Update propobj={this.state.EMPID} /> : this.state.Type === "HR" ? <Search propObj={this.state.Type}/> : this.state.Type === "Admin" ? <Admin propObj={this.state.Type}/> : <Login handleChange = {this.handleChange}/> }
+         {/* {this.state.Type === "employee" ? <Update propobj={this.state.EMPID} /> : this.state.Type === "HR" ? <Search propObj={this.state.Type}/> : this.state.Type === "Admin" ? <Admin propObj={this.state.Type}/> : <Login handleChange = {this.handleChange}/> } */}
               
                               {/* {this.state.Type ==="employee" ? <Update propobj={this.state.EMPID} />:<Login />}
           {/* { this.state.isLogin ? <Login /> : <Register handleChange = {this.handleChange }/>} */}
