@@ -13,6 +13,7 @@ export default class Register extends Component {
     this.onChangeretypePassword = this.onChangeretypePassword.bind(this);
     this.saveUser = this.saveUser.bind(this);
     this.newEmployee = this.newEmployee.bind(this);
+    this.validateUsernamePassword = this.validateUsernamePassword.bind(this);
 
 
     this.state = {
@@ -42,6 +43,27 @@ export default class Register extends Component {
     });
   }
 
+  validateUsernamePassword(){
+    if(this.state.UserName==="")
+    {
+      alert("Please Fill All fields")
+      return false;
+      
+    }
+    if(this.state.retypePassword!== this.state.Password)
+    {
+      alert("password Didn't matched");
+      return false;
+      
+    }
+    if(this.state.Password==="")
+    {
+      alert("Please Fill All fields")
+      return false;
+      
+    }
+    return true;
+  }
 
     saveUser() {
     var data = {
@@ -49,8 +71,9 @@ export default class Register extends Component {
       Password: this.state.Password,
       retypePassword : this.state.retypePassword
     };
+    
 
-    EmployeeDataService.create(data)
+      EmployeeDataService.create(data)
       .then(response => {
         this.setState({
           id: response.data.id,
@@ -73,6 +96,9 @@ export default class Register extends Component {
       .catch(e => {
         console.log(e);
       });
+
+    
+    
   }
 
   newEmployee() {
@@ -117,7 +143,7 @@ export default class Register extends Component {
                     id="retypePassword" minLength="6"
                     placeholder="retypepassword" 
                     onChange={this.onChangeretypePassword}/>
-                    <input className="btnsubmit" onClick={this.saveUser} type="submit" value="Submit" /><br/> 
+                    <button className="btnsubmit" onClick={this.saveUser}>Register</button><br/> 
                     <br />
 
                 {/* </form> */}
