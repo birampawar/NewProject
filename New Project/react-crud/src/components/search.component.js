@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import EmployeeDataService from "../services/employee.service";
-import profilepic from '../images/photo1.jpg'
+import profilepic from '../images/photo1.png'
 import '../css/list.css'
 import { Link } from "react-router-dom";
 import Update from "./update.component";
