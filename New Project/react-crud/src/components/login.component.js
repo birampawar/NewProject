@@ -5,6 +5,7 @@ import Search from "./search.component";
 import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router";
 //import logo from '../images/agiliad-logo.png'
+import NotificationManager from 'react-notifications';
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +18,7 @@ export default class Login extends Component {
       id: null,
       UserName: "",
       Password: "", 
-      selectedOption: "",
+      selectedOption: "employee",
       submitted: false
     };
   }
@@ -54,10 +55,9 @@ export default class Login extends Component {
         });
         console.log(response.data);
         if(response.status === 200){
-          alert(response.data);
+          alert("Login Successful");
           this.props.handleChange(true,response.data.id, this.state.selectedOption);
         }
-
         this.newEmployee();
       })
       .catch(e => {
@@ -90,14 +90,13 @@ export default class Login extends Component {
               value= {this.state.UserName}
               name="UserName" 
               id="username" 
-              required
               placeholder="Username" 
               onChange={this.onChangeUserName}/>
               <input className="small" 
               type="password" 
               value={this.state.Password} 
               name="Password" 
-              id="password" minLength="6"
+              id="password" 
               placeholder="password" 
               onChange={this.onChangePassword}/>    
               <div className="check">
@@ -120,9 +119,8 @@ export default class Login extends Component {
                   onChange={(e) =>{this.setState({selectedOption:e.target.value})}}
                   ></input> Admin
               </div>
-              <input className="btnsubmit" required onClick={this.saveUser} type="submit" value="Submit" />
+              <input className="btnsubmit" onClick={this.saveUser} type="submit" value="Submit" />
               <a href="#">Forgot password ?</a>
-              <a href="#">Dont have an account??..Sign up</a>
           {/* </form> */}
       </div>
       
