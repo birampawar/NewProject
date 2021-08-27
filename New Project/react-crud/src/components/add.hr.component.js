@@ -88,21 +88,21 @@ export default class AddHr extends Component {
             {/* Main Content */}
             <div className="search" >
                 <input class="small" 
-                type="text" required
+                type="text" 
                 value={this.state.UserName}
                 name="UserName" 
                 id="UserName" 
                 onChange={this.onChangeUserName}
                 placeholder="Username"></input>
                 <input class="small" 
-                type="password" required
+                type="password" 
                 value={this.state.Password} 
                 name="Password" 
                 id="Password"
                 onChange={this.onChangePassword}
                 placeholder="Password"></input>
                 <input class="small" 
-                type="text" required
+                type="text" 
                 value={this.state.Domain} 
                 name="Domain" 
                 id="Domain" 
