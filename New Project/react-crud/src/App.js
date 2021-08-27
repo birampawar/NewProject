@@ -9,6 +9,7 @@ import Login from "./components/login.component"
 import Search from "./components/search.component"
 import Admin from "./components/admin.component"
 import Header from "./components/header"
+import Home from "./components/home.component";
 import AddHr from "./components/add.hr.component"
 import Forgot from "./components/forgot.component";
 import Update from "./components/update.component";
@@ -36,7 +37,7 @@ class App extends Component {
     return (
         <div className="container mt-3">
           <Header />
-          {/* <Forgot/> */}
+          {/* <Home/> */}
          {this.state.Type === "employee" ? <Update propobj={this.state.EMPID} /> : this.state.Type === "HR" ? <Search propObj={this.state.Type}/> : this.state.Type === "Admin" ? <Admin propObj={this.state.Type}/> : <Login handleChange = {this.handleChange}/> }
               
                               {/* {this.state.Type ==="employee" ? <Update propobj={this.state.EMPID} />:<Login />}

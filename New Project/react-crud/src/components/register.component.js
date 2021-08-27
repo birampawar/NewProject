@@ -123,7 +123,6 @@ export default class Register extends Component {
                     placeholder="retypepassword" 
                     onChange={this.onChangeretypePassword}/>
                     <input className="btnsubmit" onClick={this.saveUser} type="submit" value="Submit" /><br/>
-                    <lable>Already Registered? <a href="#" > Login Here</a></lable>  
                     <br />
 
                 
