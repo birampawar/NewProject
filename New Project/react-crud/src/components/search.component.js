@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import EmployeeDataService from "../services/employee.service";
-import profilepic from '../images/photo1.png'
+import profilepic from '../images/photo1.jpg'
 import '../css/list.css'
 import { Link } from "react-router-dom";
 import Update from "./update.component";
@@ -11,7 +11,7 @@ export default class Search extends Component {
         this.OnChangeSearchskill = this.OnChangeSearchskill.bind(this);
         this.searchskill = this.searchskill.bind(this);
         this.setActiveEmployee = this.setActiveEmployee.bind(this);
-
+        this.validateSearch = this.validateSearch.bind(this);
         this.state={
             employees:[],
             currentEmployee: null,
@@ -26,7 +26,14 @@ export default class Search extends Component {
       search: e.target.value
     });
   }
-
+  validateSearch(){
+    if(this.state.search==="")
+      {
+        alert("Please Fill field")
+        return true
+        
+      }
+  }
   setActiveEmployee(employee, index) {
     this.setState({
       currentEmployee: employee,
@@ -38,7 +45,8 @@ export default class Search extends Component {
     var data = {
         search: this.state.search
       };
-    EmployeeDataService.findSkills(data)
+      
+        EmployeeDataService.findSkills(data)
       .then(response => {
         this.setState({
           employees: response.data
@@ -48,6 +56,8 @@ export default class Search extends Component {
       .catch(e => {
         console.log(e);
       });
+     
+    
   }
   
   render() {
@@ -62,7 +72,9 @@ export default class Search extends Component {
                   <ul className="list-group" type="none">
                       <li><input type="text"className="prop" 
                       placeholder="Search by Skills, Tools, Domain" 
-                      value={search}onChange={this.OnChangeSearchskill}></input> <button onClick={this.searchskill} className="btn btn-primary">Search</button></li>
+                      value={search}onChange={this.OnChangeSearchskill}></input> 
+                      <button onClick={this.searchskill,this.validateSearch} className="btn searchbtn btn-primary">Search</button>
+                      </li>
                   </ul>
                   
                   <ul className="list-group">
