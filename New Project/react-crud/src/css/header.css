@@ -13,6 +13,7 @@
 }
 
 
+
 .right{
     text-align: center;
 }
@@ -26,5 +27,8 @@
     }
     #headerId{
         margin-bottom: 10%;
+    }
+    .logo{
+        width: 100%;
     }
 }
