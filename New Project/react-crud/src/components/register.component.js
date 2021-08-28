@@ -4,6 +4,7 @@ import '../css/main.css';
 import { BrowserRouter, Switch,Route, Link } from "react-router-dom";
 import Search from "./search.component";
 import Login from "./login.component";
+import validator from 'validator';
 //import logo from '../images/agiliad-logo.png'
 export default class Register extends Component {
   constructor(props) {
@@ -13,7 +14,6 @@ export default class Register extends Component {
     this.onChangeretypePassword = this.onChangeretypePassword.bind(this);
     this.saveUser = this.saveUser.bind(this);
     this.newEmployee = this.newEmployee.bind(this);
-
 
     this.state = {
       id: null,
@@ -42,14 +42,25 @@ export default class Register extends Component {
     });
   }
 
-
     saveUser() {
+      
+      
+     
     var data = {
       UserName: this.state.UserName,
       Password: this.state.Password,
       retypePassword : this.state.retypePassword
     };
-
+    var pass = this.state.Password
+    var repass = this.state.retypePassword
+    if(pass !== repass){
+      alert("Password and Retype Password should Match");
+    }
+    if (validator.isStrongPassword(pass, {
+      minLength: 8, minLowercase: 1,
+      minUppercase: 1, minNumbers: 1, minSymbols: 1
+    })){
+     
     EmployeeDataService.create(data)
       .then(response => {
         this.setState({
@@ -64,16 +75,17 @@ export default class Register extends Component {
           alert("Registered Successfully");
           this.props.handleChange(true);
         }
-        if(response.status === 400){
-          console.log("in 400")
-          alert("Error Occured");
-          this.newEmployee();
-        }
+        this.newEmployee();
       })
-      .catch(e => {
+      .catch(e => {    
         console.log(e);
       });
-  }
+    }
+    else{
+      alert("Password must be alphanumeric and contain symbols");
+    }
+
+}
 
   newEmployee() {
     this.setState({
@@ -98,23 +110,24 @@ export default class Register extends Component {
                 {/* <form action= "/register"  method="POST"> */}
                     <input className="small" 
                     align="center" 
-                    type="text" 
+                    type="text" required
                     value={this.state.UserName}
                     onChange={this.onChangeUserName}
                     name="UserName" 
                     id="UserName" placeholder="Username"/>
                     <input className="small" 
-                    type="password" 
+                    type="password" required minLength="6" 
                     value={this.state.Password} 
                     name="Password" 
                     id="Password" 
                     placeholder="password" 
-                    onChange={this.onChangePassword}/>
+                    onChange={this.onChangePassword}
+                    />
                     <input className="small" 
-                    type="password" minLength="6"
+                    type="password" required minLength="6"
                     value={this.state.retypePassword} 
                     name="retypePassword" 
-                    id="retypePassword" minLength="6"
+                    id="retypePassword"
                     placeholder="retypepassword" 
                     onChange={this.onChangeretypePassword}/>
                     <input className="btnsubmit" onClick={this.saveUser} type="submit" value="Submit" /><br/> 

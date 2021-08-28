@@ -14,6 +14,7 @@ export default class Search extends Component {
         this.showDetails =  this.showDetails.bind(this);
         this.setActiveEmployee = this.setActiveEmployee.bind(this);
         this.EditEmployee = this.EditEmployee.bind(this);
+        this.DeleteEmployee = this.DeleteEmployee.bind(this);
 
         this.state={
             employees:[],
@@ -21,7 +22,7 @@ export default class Search extends Component {
             currentIndex: -1,
             search :"",
             empid : null,
-            isEdit:false
+            isEdit:false,
         }
     };
     showDetails()
@@ -83,6 +84,14 @@ export default class Search extends Component {
       </React.Fragment>)
     }
 
+    DeleteEmployee(empid){
+      EmployeeDataService.delete(empid)
+      .then(response => {
+        console.log(response.data);
+      })
+      alert("Employee Data Deleted Successfully");
+    }
+
     OnChangeSearchskill(e) {
     this.setState({
       search: e.target.value
@@ -97,6 +106,7 @@ export default class Search extends Component {
       isEdit:false
     });
   }
+
 
   EditEmployee(employee,index){
     console.log("ineditemployee",employee.id)
@@ -116,6 +126,9 @@ export default class Search extends Component {
         this.setState({
           employees: response.data
         });
+        if(this.state.employees.length<1){
+          alert("No Data Found");
+        }
         console.log(response.data);
       })
       .catch(e => {
@@ -128,12 +141,11 @@ export default class Search extends Component {
     console.log("in Search Page");
 
     return (
-      
-      <div action="" >
-        {this.props.propObj === "Admin" ?<></>:<Header />} 
-          <div className="container">
-         
-          <div className="row" >
+      <div action="">
+        {this.props.propObj === "Admin" ?<></>:<Header />}
+        <div className="container">
+
+          <div className="row">
               <div className="col-5" >
                   <ul className="list-group" type="none">
                       <li><input type="text"className="prop" 
@@ -144,15 +156,15 @@ export default class Search extends Component {
                   <ul className="list-group">
                       {employees && employees.map((employee, index) => (
                           <li className={"list-group-item " +(index === currentIndex ? "active" : "")}>
-                         <div className="row">
+                         <div className="row" >
                               <div className="col-8" onClick={() => this.setActiveEmployee(employee, index)}key={index}>
                               <b> {employee.UserName} </b>  <p>{employee.Domain}</p>
                               </div>
                               {this.props.propObj==="Admin"?
                               <div className="col right">
                                 
-                                <button type="button" class="btn listbtn btn-success" onClick={()=>this.EditEmployee(employee,index)}><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></button>
-                                <button type="button" class="btn listbtn btn-danger"><i className="fa fa-trash fa-2x"></i></button>
+                                <button type="button" class="btn listbtn btn-success" onClick={() => this.EditEmployee(employee,index)}><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></button>
+                                <button type="button" class="btn listbtn btn-danger" onClick={() => {if (window.confirm('Do you want to delete this employee?')) this.DeleteEmployee(employee.id)}}><i className="fa fa-trash fa-2x"></i></button>
 
                               </div>
                               : <></>}
@@ -167,8 +179,8 @@ export default class Search extends Component {
 
                         {this.state.isEdit ? <div className="col"><Update displayHeader={false} propobj={this.state.currentEmployee.id} /></div> : this.showDetails()}
           </div>
-
-      </div>   
+            </div>
+          
       </div>
     );
   }
