@@ -43,8 +43,8 @@ export default class Home extends Component {
             {/* Main Content */}
             <div className="container adashboard">
               {/* <BrowserRouter> */}
-                <button className="tabs" onClick={this.onLogin}>Login</button>
-                <button className="tabs" onClick={this.onRegister}>Register</button>
+                <button className="tabs btn-primary" onClick={this.onLogin}>Login</button>
+                <button className="tabs btn-primary" onClick={this.onRegister}>Register</button>
                 {this.state.status ?  <Register /> : <Login handleChange = {this.props.handleChange} handleForgot = {this.props.handleForgot}/>}
                 
             </div>

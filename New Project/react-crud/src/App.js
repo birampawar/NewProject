@@ -41,7 +41,7 @@ class App extends Component {
   }
   render() {
     return (
-        <div className="container mt-3">
+        <div className="">
          { this.state.forgot == true ? 
          <Forgot /> : 
          this.state.Type === "employee" ?
@@ -51,6 +51,7 @@ class App extends Component {
            : this.state.Type === "Admin" ?
             <Admin propObj={this.state.Type}/> :
              <Home handleChange = {this.handleChange} handleForgot={this.handleForgot}/>}
+             {/* <Search/> */}
         </div>
     );
   }

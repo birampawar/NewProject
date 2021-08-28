@@ -128,14 +128,17 @@ export default class Search extends Component {
     console.log("in Search Page");
 
     return (
-      <div action="">
-        {this.props.propObj === "Admin" ?<></>:<Header />}
+      
+      <div action="" >
+        {this.props.propObj === "Admin" ?<></>:<Header />} 
+          <div className="container">
+         
           <div className="row" >
               <div className="col-5" >
                   <ul className="list-group" type="none">
                       <li><input type="text"className="prop" 
                       placeholder="Search by Skills, Tools, Domain" 
-                      value={search} onChange={this.OnChangeSearchskill}></input> <button onClick={this.searchskill} className="btn btn-primary">Search</button></li>
+                      value={search} onChange={this.OnChangeSearchskill}></input> <button onClick={this.searchskill} className="btn searchbtn btn-primary">Search</button></li>
                   </ul>
                   
                   <ul className="list-group">
@@ -165,7 +168,7 @@ export default class Search extends Component {
                         {this.state.isEdit ? <div className="col"><Update displayHeader={false} propobj={this.state.currentEmployee.id} /></div> : this.showDetails()}
           </div>
 
-          
+      </div>   
       </div>
     );
   }
