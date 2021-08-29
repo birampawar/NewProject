@@ -8,12 +8,14 @@ const saltRounds = 10;
 
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
+  if(req.body.Password !== ""){
       if (req.body.Password  !== req.body.retypePassword) {
         res.status(400).send({
           message: "Password and Retype password are not matching!"
         });
         return;
       }
+    }
       const password = req.body.Password;
       bcrypt.hash(password, saltRounds, (err, hash) => {
         if (err) {
@@ -48,19 +50,23 @@ exports.login = (req,res) => {
  if(req.body.selectedOption == "employee"){
  Employee.findOne({ where: { UserName: {[Op.like]: '%' + req.body.UserName + '%'} } })
     .then(data => {
+      if(data != null){
         bcrypt.compare(Password, data.Password, (error, response) => {
             if (response) {
-                res.send(response.data);
+                res.send(data);
               } else {
                 res.status(401).send("Wrong username/password combination!" );
               }
         });
       
-    })
+    }else{
+      res.status(401).send("User Not Found");
+    }})
   }
   else if(req.body.selectedOption == "HR"){
     HR.findOne({ where: { UserName: {[Op.like]: '%' + req.body.UserName + '%'} } })
     .then(data => {
+      if(data != null){
         bcrypt.compare(Password, data.Password, (error, response) => {
             if (response) {
                 res.send("Login Successful");
@@ -68,6 +74,9 @@ exports.login = (req,res) => {
                 res.status(401).send("Wrong username/password combination!" );
               }
         });
+      }else{
+          res.status(401).send("User Not Found");
+      }
       
     })
 
@@ -171,10 +180,29 @@ exports.delete = (req, res) => {
 
 // Find Search by Skills 
 exports.findSkills = (req, res) => {
-    Employee.findAll({ where: { Skillsets: {[Op.like]: '%' + req.body.search + '%'} } })
+    // Employee.findAll({ where: { Skillsets: {[Op.like]: '%' + req.body.search + '%'} } })
+    Employee.findAll({ where: { [Op.or] : [{
+      Skillsets : {
+        [Op.like] : '%' + req.body.search + '%'
+      }
+    },
+    {
+      Tools : {
+        [Op.like] : '%' + req.body.search + '%'
+      }
+    },
+    {
+      Domain : {
+        [Op.like] : '%' + req.body.search + '%'
+      }
+    }
+  ]
+
+     } })
     .then(data => {
       res.send(data);
       console.log(data);
+
     })
     .catch(err => {
       res.status(500).send({
@@ -184,3 +212,81 @@ exports.findSkills = (req, res) => {
     });
   
 };
+
+exports.reset = (req,res) => {
+  var num = require('./randomno.js');
+var nodemailer = require('nodemailer');
+var otp= num.randomvalue(6);
+
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'devpawar9712@gmail.com',
+    pass: 'Firstproject@mail'
+  }
+});
+
+var mailOptions = {
+  from: 'devpawar9712@gmail.com',
+  to: req.body.email,
+  subject: 'OTP',
+  text: ' Please use below OTP for changing your password.       '
+  +otp
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+});
+console.log(otp);
+}
+
+exports.otpVerification = (req,res) => {
+  if(value==req.body.otp)
+  {
+    console.log('valid otp');
+  } else{
+    console.log('invalid otp');
+  }
+}
+
+exports.resetPassword = (req,res) => {
+  if (req.body.Password  !== req.body.retypePassword) {
+    res.status(400).send({
+      message: "Password and Retype password are not matching!"
+    });
+    return;
+  }
+  const password = req.body.Password;
+  bcrypt.hash(password, saltRounds, (err, hash) => {
+    if (err) {
+      console.log("hash",err);
+    }
+    const id = req.params.id;
+
+    Employee.update(req.body, {
+      where: { id: id }
+    })
+      .then(num => {
+        if (num == 1) {
+          res.send({
+            message:`Data updated Successfully`
+          });
+        } else {
+          res.send({
+            message: `Cannot update Employee with id=${id}. Maybe Employee was not found or req.body is empty!`
+          });
+        }
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Error updating Employee with id=" + id
+        });
+      });
+  
+})
+}
+

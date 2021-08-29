@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import EmployeeDataService from "../services/employee.service";
 import '../css/main.css';
 import Header from "./header";
+import validator from "validator";
 export default class AddHr extends Component {
 
     constructor(props) {
@@ -40,61 +41,37 @@ export default class AddHr extends Component {
         });
       }
     
-      Valid()
-       {
-        if(this.state.UserName==="" && this.state.domainerr==="")
-        {
-          this.setState({usererr:"Please enter Username"},{domainerr:"Please enter Domain"})
-        }
-        else if(this.state.UserName==="" )
-         {
-           this.setState({usererr:"Please enter Username"})
-         }
-        else if(this.state.domainerr==="")
-         {
-           this.setState({domainerr:"Please enter Domain"})
-         }
-         else{
-           return true
-         }
-         if(! this.state.Password.length<8)
-         {
-           this.setState({Passerr:"Password lenght shoud be more than 8"})
-         }
-         
-       }
-
       saveUser() {
         var data = {
           UserName: this.state.UserName,
           Password: this.state.Password,
           Domain : this.state.Domain
         };
-      this.setState(
-            {Passerr:"",usererr:"",domainerr:""}
-          )
-          if(this.Valid())
-                {
-                  alert("Form has been submited");
-                  
-                }
+        var pass = this.state.Password;
+        if (validator.isStrongPassword(pass, {
+          minLength: 8, minLowercase: 1,
+          minUppercase: 1, minNumbers: 1, minSymbols: 1
+        })){
         EmployeeDataService.registerhr(data)
           .then(response => {
             this.setState({
               id: response.data.id,
               UserName: response.data.UserName,
               Password: response.data.Password,
-              Domain : response.data.Domain,
-              //published: response.data.published,
-    
+              Domain : response.data.Domain,    
               submitted: true
             });
+            alert("Registered Successfully");
             this.newEmployee();
             console.log(response.data);
           })
           .catch(e => {
             console.log(e);
           });
+        }
+        else{
+          alert("Password must be alphanumeric and contain symbols");
+        }
       }
     
       newEmployee() {
@@ -102,7 +79,7 @@ export default class AddHr extends Component {
           id: null,
           UserName: "",
           Password: "",
-          Domain: "",          //published: false,
+          Domain: "",          
     
           submitted: false
         });
@@ -125,7 +102,6 @@ export default class AddHr extends Component {
                 id="UserName" 
                 onChange={this.onChangeUserName}
                 placeholder="Username"></input>
-                <p style={{color:"red",fontSize:"20x"}}>{this.state.usererr}</p>
                 <input class="small" 
                 type="password" required
                 value={this.state.Password} 
@@ -133,7 +109,6 @@ export default class AddHr extends Component {
                 id="Password"
                 onChange={this.onChangePassword}
                 placeholder="Password"></input>
-                <p style={{color:"red",fontSize:"20x"}}>{this.state.Passerr}</p>
                 <input class="small" 
                 type="text" required
                 value={this.state.Domain} 
@@ -141,7 +116,6 @@ export default class AddHr extends Component {
                 id="Domain" 
                 onChange={this.onChangeDomain}
                 placeholder="Domain"></input>
-                <p style={{color:"red",fontSize:"20x"}}>{this.state.domainerr}</p>
                 <input class="small btnsubmit" 
                 type="submit" 
                 onClick={this.saveUser}

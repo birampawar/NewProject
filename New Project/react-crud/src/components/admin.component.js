@@ -47,8 +47,8 @@ export default class Admin extends Component {
             {/* Main Content */}
             <div className="container adashboard">
               {/* <BrowserRouter> */}
-                <button className="tabs" onClick={this.onAddHR}>List</button>
-                <button className="tabs" onClick={this.onShowList}>Add</button>
+                <button className="tabs btn-primary" onClick={this.onAddHR}>List</button>
+                <button className="tabs btn-primary" onClick={this.onShowList}>Add</button>
                 {this.state.status ?  <AddHr /> : <Search propObj="Admin"/>}
                 
             </div>

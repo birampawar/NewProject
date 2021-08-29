@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import EmployeeDataService from "../services/employee.service";
-import Header from './header'
 import '../css/main.css';
+import Header from "./header";
 
 export default class Forgot extends Component {
   
@@ -15,7 +15,7 @@ export default class Forgot extends Component {
                 crossorigin="anonymous"
             />
             {/* Main Content */}
-            <Header obj={true}/>
+           <Header/>
             <div className="search" >
                 <input required className="small" type="email" name="email" id="email" placeholder="Enter your email address"></input>
                 <input required className="small btnsubmit" type="submit" value="Send OTP"></input>

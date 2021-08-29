@@ -60,9 +60,14 @@ export default class Login extends Component {
           alert("Login Successful");
           this.props.handleChange(true,response.data.id, this.state.selectedOption);
         }
+        else{
+          console.log("in else");
+          window.alert(response.data)
+        }
         this.newEmployee();
       })
       .catch(e => {
+        alert("Invalid Credentials");
         console.log(e);
       });
   }
@@ -95,7 +100,7 @@ export default class Login extends Component {
               placeholder="Username" 
               onChange={this.onChangeUserName}/>
               <input className="small" 
-              type="password" minLength="6"
+              type="password" minLength="6" required
               value={this.state.Password} 
               name="Password" 
               id="password" 
