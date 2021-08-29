@@ -128,13 +128,6 @@ export default class Login extends Component {
               </div>
               <input className="btnsubmit" required onClick={this.saveUser} type="submit" value="Submit" />
               <a href="#" onClick={this.props.handleForgot}>Forgot Password</a>
-              {/* <BrowserRouter>
-              <NavLink to="/reset">Forgot password ?</NavLink>
-              <Switch> 
-                {/* <Route exact path="/" component={App}></Route> */}
-                {/* <Route exact={false} path="/reset" component={Forgot}></Route>
-              </Switch>
-              </BrowserRouter> */} 
       </div>
       
   </div>
