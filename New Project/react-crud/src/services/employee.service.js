@@ -32,6 +32,14 @@ class EmployeeDataService {
   findSkills(data) {
     return http.post("/employees/search",data);
   }
+
+  reset(data){
+    return http.post("/employees/reset",data);
+  }
+
+  resetPassword(data){
+    return http.post("employees/resetPassword",data);
+  }
 }
 
 export default new EmployeeDataService();

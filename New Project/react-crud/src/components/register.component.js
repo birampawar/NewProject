@@ -43,9 +43,6 @@ export default class Register extends Component {
   }
 
     saveUser() {
-      
-      
-     
     var data = {
       UserName: this.state.UserName,
       Password: this.state.Password,

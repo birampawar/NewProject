@@ -16,7 +16,6 @@ export default class Home extends Component {
   
   onLogin(e)
   {
-    console.log("In add hr")
     this.setState({
       status : false
     })
@@ -24,7 +23,6 @@ export default class Home extends Component {
   
   onRegister(e)
   {
-    console.log("In add hr")
     this.setState({
       status:true
     })
@@ -33,7 +31,7 @@ export default class Home extends Component {
   render() {
     return (      
         <div>
-            <Header obj={true}/>
+            <Header obj={true} />
             <link
                 rel="stylesheet"
                 href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
