@@ -12,6 +12,7 @@ import AddHr from "./components/add.hr.component"
 import Update from "./components/update.component";
 import Home from "./components/home.component";
 import Forgot from "./components/forgot.component";
+import Upload from "./components/file.upload.component";
 class App extends Component {
   constructor(props){
     super(props);
@@ -51,7 +52,8 @@ class App extends Component {
            : this.state.Type === "Admin" ?
             <Admin propObj={this.state.Type}/> :
              <Home handleChange = {this.handleChange} handleForgot={this.handleForgot}/>}
-        </div>
+              
+        </div>  
     );
   }
 }

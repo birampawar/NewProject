@@ -133,4 +133,8 @@ a{
     .tabs{
         width: 125px;
     }
+    .updatepanel{
+        width: 100%;
+    }
+    
 }

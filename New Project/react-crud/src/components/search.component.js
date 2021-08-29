@@ -146,7 +146,7 @@ export default class Search extends Component {
         <div className="container">
 
           <div className="row">
-              <div className="col-5" >
+              <div className="col-sm-5" >
                   <ul className="list-group" type="none">
                       <li><input type="text"className="prop" 
                       placeholder="Search by Skills, Tools, Domain" 
@@ -163,8 +163,8 @@ export default class Search extends Component {
                               {this.props.propObj==="Admin"?
                               <div className="col right">
                                 
-                                <button type="button" class="btn listbtn btn-success" onClick={() => this.EditEmployee(employee,index)}><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></button>
-                                <button type="button" class="btn listbtn btn-danger" onClick={() => {if (window.confirm('Do you want to delete this employee?')) this.DeleteEmployee(employee.id)}}><i className="fa fa-trash fa-2x"></i></button>
+                                <button type="button" class="btn listbtn btn-success" onClick={() => this.EditEmployee(employee,index)}><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></button>
+                                <button type="button" class="btn listbtn btn-danger" onClick={() => {if (window.confirm('Do you want to delete this employee?')) this.DeleteEmployee(employee.id)}}><i className="fa fa-trash fa-lg"></i></button>
 
                               </div>
                               : <></>}
