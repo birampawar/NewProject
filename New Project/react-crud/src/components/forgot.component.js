@@ -146,10 +146,10 @@ export default class Forgot extends Component {
             />
             {/* Main Content */}
            <Header/>
-            <div className="search" >
+            <div  >
 
               {this.state.isOTPSent ? 
-              <span>
+              <div className="search">
             <input required className="small" 
                 type="text" 
                 name="UserName" 
@@ -166,9 +166,10 @@ export default class Forgot extends Component {
                 type="submit" 
                 value="Send OTP" 
                 onClick={this.SendOTP}></input>
-                </span> : null }
+                </div> : null }
+
                 {this.state.isVerified ? 
-                <div>
+                <div className="search">
                 <input required className="small" 
                 type="text" 
                 onChange={this.OnChangeEnterOTP}
@@ -183,7 +184,7 @@ export default class Forgot extends Component {
                 : null}
 
                 {this.state.isReset ? 
-                <div>
+                <div className="search">
                 <input required className="small" 
                 type="Password" 
                 minLength="8" 

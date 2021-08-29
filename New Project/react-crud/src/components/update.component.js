@@ -129,8 +129,8 @@ export default class Update extends Component {
 
     return (   
       
-        <div>
-          {this.props.displayHeader ? <Header  /> : null}
+        <div> 
+          {this.props.dislplayHeader ? <Header  /> : null}
             <link
                 rel="stylesheet"
                 href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
