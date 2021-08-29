@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import '../css/main.css';
 import axios from 'axios';
- 
-export default class Upload extends Component {
+import EmployeeDataService from '../services/employee.service' 
+export default class FUpload extends Component {
   constructor(props){
     super(props)
     this.onFileChange = this.onFileChange.bind(this);
@@ -19,12 +19,16 @@ export default class Upload extends Component {
     onFileUpload = () => {
         const formData = new FormData();
         formData.append(
-          "myFile",
+          "file",
           this.state.selectedFile,
           this.state.selectedFile.name
         );
         console.log(this.state.selectedFile);
-        axios.post("api/uploadfile", formData);
+        EmployeeDataService.uploadFile(formData)
+        .then(response => {
+            alert("File Uploaded Successfully");
+        })
+        console.log("uploaded");
       };
 
       fileData = () => {
@@ -49,11 +53,13 @@ export default class Upload extends Component {
           );
         }
       };
+      
         render() {
             return (
               <div >
                   <div className="search">
-                      <input className="small" type="file" name="file" onChange={this.onFileChange} />
+                  
+                      <input className="small" type="file" multiple accept="image/*" name="file" onChange={this.onFileChange} />
                       <button className=" btnsubmit" onClick={this.onFileUpload}>Upload</button>
                   </div>
                 {this.fileData()}
