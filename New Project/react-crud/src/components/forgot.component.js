@@ -62,6 +62,10 @@ export default class Forgot extends Component {
       UserName:this.state.UserName,
       email : this.state.email
     };
+    if(this.state.UserName == "" || this.state.email == ""){
+      alert("Please Enter UserName and Email ID");
+    }
+    else{
 
     EmployeeDataService.reset(data)
     .then(response => {
@@ -80,6 +84,7 @@ export default class Forgot extends Component {
       console.log(e);
     });
   }
+}
 
   CheckOTP() {
     if(this.state.OTP == this.state.EnteredOTP){
@@ -149,7 +154,11 @@ export default class Forgot extends Component {
             <div  >
 
               {this.state.isOTPSent ? 
+<<<<<<< Updated upstream
               <div className="search">
+=======
+              <div>
+>>>>>>> Stashed changes
             <input required className="small" 
                 type="text" 
                 name="UserName" 
@@ -166,8 +175,12 @@ export default class Forgot extends Component {
                 type="submit" 
                 value="Send OTP" 
                 onClick={this.SendOTP}></input>
+<<<<<<< Updated upstream
                 </div> : null }
 
+=======
+                </div>: null }
+>>>>>>> Stashed changes
                 {this.state.isVerified ? 
                 <div className="search">
                 <input required className="small" 

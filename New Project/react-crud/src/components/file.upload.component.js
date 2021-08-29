@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import '../css/main.css';
 import axios from 'axios';
+<<<<<<< Updated upstream
  
 export default class Upload extends Component {
+=======
+import EmployeeDataService from '../services/employee.service' 
+export default class FUpload extends Component {
+>>>>>>> Stashed changes
   constructor(props){
     super(props)
     this.onFileChange = this.onFileChange.bind(this);
@@ -19,12 +24,24 @@ export default class Upload extends Component {
     onFileUpload = () => {
         const formData = new FormData();
         formData.append(
+<<<<<<< Updated upstream
           "myFile",
+=======
+          "file",
+>>>>>>> Stashed changes
           this.state.selectedFile,
           this.state.selectedFile.name
         );
         console.log(this.state.selectedFile);
+<<<<<<< Updated upstream
         axios.post("api/uploadfile", formData);
+=======
+        EmployeeDataService.uploadFile(formData)
+        .then(response => {
+            alert("File Uploaded Successfully");
+        })
+        console.log("uploaded");
+>>>>>>> Stashed changes
       };
 
       fileData = () => {
@@ -49,11 +66,20 @@ export default class Upload extends Component {
           );
         }
       };
+<<<<<<< Updated upstream
+=======
+      
+>>>>>>> Stashed changes
         render() {
             return (
               <div >
                   <div className="search">
+<<<<<<< Updated upstream
                       <input className="small" type="file" name="file" onChange={this.onFileChange} />
+=======
+                  
+                      <input className="small" type="file" multiple accept="image/*" name="file" onChange={this.onFileChange} />
+>>>>>>> Stashed changes
                       <button className=" btnsubmit" onClick={this.onFileUpload}>Upload</button>
                   </div>
                 {this.fileData()}

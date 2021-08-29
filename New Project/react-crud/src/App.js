@@ -12,8 +12,12 @@ import AddHr from "./components/add.hr.component"
 import Update from "./components/update.component";
 import Home from "./components/home.component";
 import Forgot from "./components/forgot.component";
+<<<<<<< Updated upstream
 import Upload from "./components/file.upload.component";
 import FUpload from "./components/folder.upload.component";
+=======
+import FUpload from "./components/file.upload.component";
+>>>>>>> Stashed changes
 class App extends Component {
   constructor(props){
     super(props);
@@ -47,7 +51,7 @@ class App extends Component {
          { this.state.forgot == true ? 
          <Forgot /> : 
          this.state.Type === "employee" ?
-          <Update dislplayHeader={true} propobj={this.state.EMPID} /> 
+          <Update displayHeader={true} propobj={this.state.EMPID} /> 
           : this.state.Type === "HR" ?
            <Search propObj={this.state.Type}/> 
            : this.state.Type === "Admin" ?

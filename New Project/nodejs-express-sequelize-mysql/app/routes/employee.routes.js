@@ -16,6 +16,7 @@ module.exports = app => {
     router.delete("/delete/:id", employees.delete);
     router.post("/reset", employees.reset);
     router.post("/resetPassword", employees.resetPassword);
+    router.post("/uploadFile",employees.uploadFile);
   
     
   
