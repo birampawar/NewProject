@@ -13,6 +13,7 @@ import Update from "./components/update.component";
 import Home from "./components/home.component";
 import Forgot from "./components/forgot.component";
 import Upload from "./components/file.upload.component";
+import FUpload from "./components/folder.upload.component";
 class App extends Component {
   constructor(props){
     super(props);
