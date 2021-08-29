@@ -40,10 +40,6 @@ class EmployeeDataService {
   resetPassword(data){
     return http.post("employees/resetPassword",data);
   }
-
-  uploadFile(data){
-    return http.post("employees/uploadFile",data);
-  }
 }
 
 export default new EmployeeDataService();

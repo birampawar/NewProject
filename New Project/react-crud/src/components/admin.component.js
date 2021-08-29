@@ -8,7 +8,6 @@ import Upload from "./file.upload.component";
 import AddHr from "./add.hr.component";
 import Search from "./search.component";
 import Header from "./header";
-import Upload from './file.upload.component';
 export default class Admin extends Component {
   constructor(props){
     super(props);
@@ -22,40 +21,20 @@ export default class Admin extends Component {
       isUpload:false
     };
   } 
-  onShowList(e)
-  {
-    console.log("In add hr")
-    this.setState({
-      isList : false,
-      isHr:true,
-      isUpload:false
-    })
-  }
   
   onShowList(e)
   {
     console.log("In add hr")
     this.setState({
-<<<<<<< Updated upstream
       isList : false,
       isHr:true,
       isUpload:false
     })
   }
   onAddHR(e)
-=======
-      isList : true,
-      isHr:false,
-      isUpload:false
-    })
-  }
-  
-  onShowUpload(e)
->>>>>>> Stashed changes
   {
-
+    console.log("In add hr")
     this.setState({
-<<<<<<< Updated upstream
       isList : true,
       isHr:false,
       isUpload:false
@@ -65,8 +44,6 @@ export default class Admin extends Component {
   {
     
     this.setState({
-=======
->>>>>>> Stashed changes
       isList : false,
       isHr:false,
       isUpload:true
@@ -92,11 +69,7 @@ export default class Admin extends Component {
                 {this.state.isHr ?  <AddHr /> : null}
                 {this.state.isUpload ?  <Upload /> : null}
                 {this.state.isList?<Search propObj="Admin"/>:null}
-<<<<<<< Updated upstream
 
-=======
-                
->>>>>>> Stashed changes
             </div>
         </div>
         
