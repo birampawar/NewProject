@@ -3,10 +3,10 @@ const Employee = db.employees;
 const HR = db.HRs;
 const Op = db.Sequelize.Op;
 const bcrypt = require("bcrypt");
-//const HR = require("../models/HR.model");
+
 const saltRounds = 10;
 
-// Create and Save a new Tutorial
+// Create and Save a new Employee
 exports.create = (req, res) => {
   if(req.body.Password !== ""){
       if (req.body.Password  !== req.body.retypePassword) {
@@ -21,6 +21,7 @@ exports.create = (req, res) => {
         if (err) {
           console.log("hash",err);
         }
+     
       const employee = {
         UserName: req.body.UserName,
         EmailId: req.body.EmailId,
@@ -214,79 +215,90 @@ exports.findSkills = (req, res) => {
 };
 
 exports.reset = (req,res) => {
+  const id = req.params.id;
+  const UserName = req.body.UserName
+
+  Employee.update(req.body, {
+    where: { UserName: UserName }
+  })
+    .then(num => {
+      if (num == 1) {
+        //send otp to mail
   var num = require('./randomno.js');
-var nodemailer = require('nodemailer');
-var otp= num.randomvalue(6);
+  var nodemailer = require('nodemailer');
+  var otp= num.randomvalue(6);
 
-var transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'devpawar9712@gmail.com',
-    pass: 'Firstproject@mail'
-  }
-});
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+      auth: {
+        user: 'vaishnavinadargi19@gmail.com',
+        pass: 'virat@18'
+      }
+    });
 
-var mailOptions = {
-  from: 'devpawar9712@gmail.com',
-  to: req.body.email,
-  subject: 'OTP',
-  text: ' Please use below OTP for changing your password.       '
-  +otp
-};
+  var mailOptions = {
+    from: 'vaishnavinadargi19@gmail.com',
+    to: req.body.email,
+    subject: 'OTP',
+    text: ' Please use below OTP for changing your password.       '
+    +otp
+  };
 
 transporter.sendMail(mailOptions, function(error, info){
   if (error) {
     console.log(error);
   } else {
     console.log('Email sent: ' + info.response);
+    console.log(otp);
+    res.status(200).send(otp);
   }
 });
-console.log(otp);
-}
-
-exports.otpVerification = (req,res) => {
-  if(value==req.body.otp)
-  {
-    console.log('valid otp');
-  } else{
-    console.log('invalid otp');
-  }
+        
+} else {
+  res.send({
+    message: `Cannot update Password for Employee with UserName=${UserName}. Maybe Employee was not found!`
+  });       
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error updating Employee with UserName=" + UserName
+      });
+    });
+    
 }
 
 exports.resetPassword = (req,res) => {
-  if (req.body.Password  !== req.body.retypePassword) {
-    res.status(400).send({
-      message: "Password and Retype password are not matching!"
-    });
-    return;
-  }
-  const password = req.body.Password;
-  bcrypt.hash(password, saltRounds, (err, hash) => {
-    if (err) {
-      console.log("hash",err);
-    }
-    const id = req.params.id;
+  Employee.findOne({ where: { UserName: {[Op.like]: '%' + req.body.UserName + '%'} } })
+    .then(data =>{
+      console.log(data);
+      const password = req.body.Password;
+      if(data != null){
 
-    Employee.update(req.body, {
-      where: { id: id }
-    })
-      .then(num => {
-        if (num == 1) {
-          res.send({
-            message:`Data updated Successfully`
-          });
-        } else {
-          res.send({
-            message: `Cannot update Employee with id=${id}. Maybe Employee was not found or req.body is empty!`
-          });
-        }
+        bcrypt.hash(password, saltRounds, (err, hash) => {
+          if (err) {
+            console.log("hash",err);
+          }
+          req.body.Password=hash;
+          Employee.update(req.body,{where: { UserName:{[Op.like]: '%'+req.body.UserName+'%'}}})
+          .then(num => {
+            if (num == 1) {
+              res.send({
+                message:`Data updated Successfully`
+              });
+            } else {
+              res.send({
+                message: `Cannot update Employee. Maybe Employee was not found or req.body is empty!`
+              });
+            }
+          })
+          .catch(err => {
+            res.status(500).send({
+              message: "Error updating Employee"
+            });
+        })
+
+      }
+        )}
       })
-      .catch(err => {
-        res.status(500).send({
-          message: "Error updating Employee with id=" + id
-        });
-      });
-  
-})
-}
-
+    }
