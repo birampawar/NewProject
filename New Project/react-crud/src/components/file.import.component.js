@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import '../css/main.css';
 import axios from 'axios';
 import EmployeeDataService from '../services/employee.service' 
-export default class Upload extends Component {
+export default class Import extends Component {
   constructor(props){
     super(props)
     this.onFileChange = this.onFileChange.bind(this);
@@ -58,8 +58,8 @@ export default class Upload extends Component {
             return (
               <div >
                   <div className="search">
-                      <input className="small" type="file" multiple accept="" name="file" onChange={this.onFileChange} />
-                      <button className=" btnsubmit" onClick={this.onFileUpload}>Upload</button>
+                      <input className="small" type="file" multiple id="fileSelect" type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="file" onChange={this.onFileChange} />
+                      <button className=" btnsubmit" onClick={this.onFileUpload}>Import</button>
                   </div>
                 {this.fileData()}
               </div>
