@@ -44,6 +44,10 @@ class EmployeeDataService {
   uploadFile(data){
     return http.post("employees/uploadFile",data);
   }
+
+  upload(data){
+    return http.post("employees/upload",data);
+  }
 }
 
 export default new EmployeeDataService();

@@ -106,7 +106,7 @@ export default class Update extends Component {
             });
             console.log(response.data);
             if(response.status === 200){
-              alert("Data Uploaded Successfully");
+              alert("Data Updated Successfully");
               this.props.handleChange(true);
             }
           })

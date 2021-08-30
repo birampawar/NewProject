@@ -3,6 +3,8 @@
 module.exports = app => {
   const employees = require("../controllers/employee.controller.js");
   const hr=require("../controllers/hr.controller.js");
+  const excelController = require("../controllers/employees/excel.controller");
+  const upload = require("../middlewares/upload");
 
   var router = require("express").Router();
 
@@ -17,6 +19,9 @@ module.exports = app => {
   router.post("/reset", employees.reset);
   router.post("/resetPassword", employees.resetPassword);
   router.post("/uploadFile",employees.uploadFile);
+  router.post("/upload", upload.single("file"), excelController.upload);
+  router.get("/getEmployees", excelController.getEmployees);
+  
 
   
 
