@@ -24,11 +24,11 @@ export default class Import extends Component {
           this.state.selectedFile.name
         );
         console.log(this.state.selectedFile);
-        EmployeeDataService.uploadFile(formData)
+        EmployeeDataService.upload(formData)
         .then(response => {
-            alert("File Uploaded Successfully");
+            alert("File Imported Successfully");
         })
-        console.log("uploaded");
+        console.log("imported");
       };
 
       fileData = () => {
@@ -48,7 +48,7 @@ export default class Import extends Component {
           return (
             <div className="search">
               <br />
-              <h4>Choose before Pressing the Upload button</h4>
+              <h4>Choose before Pressing the Import button</h4>
             </div>
           );
         }

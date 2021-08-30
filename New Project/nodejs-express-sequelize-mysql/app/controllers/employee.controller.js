@@ -4,6 +4,7 @@ const HR = db.HRs;
 const Op = db.Sequelize.Op;
 const bcrypt = require("bcrypt");
 const multer = require("multer");
+const reader = require('xlsx')
 
 const saltRounds = 10;
 
