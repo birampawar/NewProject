@@ -142,7 +142,7 @@ export default class Search extends Component {
 
     return (
       <div action="">
-        {this.props.propObj === "Admin" ?<></>:<Header />}
+        {this.props.propObj === "Admin" ?<></>:<Header handleChange = {this.props.handleChange}/>}
         <div className="container">
 
           <div className="row">

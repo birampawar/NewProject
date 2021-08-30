@@ -41,7 +41,7 @@ export default class Employee extends Component {
   render() {
     return (      
         <div>
-          <Header />
+          <Header handleChange = {this.props.handleChange}/>
             <link
                 rel="stylesheet"
                 href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"

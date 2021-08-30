@@ -47,11 +47,11 @@ class App extends Component {
          { this.state.forgot == true ? 
          <Forgot /> : 
          this.state.Type === "employee" ?
-          <Employee propobj={this.state.EMPID} /> 
+          <Employee handleChange = {this.handleChange} propobj={this.state.EMPID} /> 
           : this.state.Type === "HR" ?
-           <Search propObj={this.state.Type}/> 
+           <Search handleChange = {this.handleChange} propObj={this.state.Type}/> 
            : this.state.Type === "Admin" ?
-            <Admin propObj={this.state.Type}/> :
+            <Admin handleChange = {this.handleChange} propObj={this.state.Type}/> :
              <Home handleChange = {this.handleChange} handleForgot={this.handleForgot}/>}
               
         </div>  
