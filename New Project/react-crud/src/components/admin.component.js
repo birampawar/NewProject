@@ -4,10 +4,10 @@ import '../css/main.css';
 import usericon from "../images/add-user.jpg"
 import listicon from "../images/list-icon.png"
 import { BrowserRouter, Link, Redirect } from "react-router-dom";
-import Upload from "./file.upload.component";
 import AddHr from "./add.hr.component";
 import Search from "./search.component";
 import Header from "./header";
+import Import from "./file.import.component";
 export default class Admin extends Component {
   constructor(props){
     super(props);
@@ -65,9 +65,9 @@ export default class Admin extends Component {
               {/* <BrowserRouter> */}
                 <button className="tabs btn-primary" onClick={this.onAddHR}>List</button>
                 <button className="tabs btn-primary" onClick={this.onShowList}>Add</button>
-                <button className="tabs btn-primary" onClick={this.onShowUpload}>Upload</button>
+                <button className="tabs btn-primary" onClick={this.onShowUpload}>Import</button>
                 {this.state.isHr ?  <AddHr /> : null}
-                {this.state.isUpload ?  <Upload /> : null}
+                {this.state.isUpload ?  <Import /> : null}
                 {this.state.isList?<Search propObj="Admin"/>:null}
 
             </div>
