@@ -59,7 +59,7 @@ export default class FUpload extends Component {
               <div >
                   <div className="search">
                   
-                      <input className="small" type="file" multiple accept="image/*" name="file" onChange={this.onFileChange} />
+                      <input className="small" type="file" multiple accept="" name="file" onChange={this.onFileChange} />
                       <button className=" btnsubmit" onClick={this.onFileUpload}>Upload</button>
                   </div>
                 {this.fileData()}
