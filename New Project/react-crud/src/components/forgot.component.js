@@ -145,7 +145,7 @@ export default class Forgot extends Component {
                 crossorigin="anonymous"
             />
             {/* Main Content */}
-           <Header obj={true} handleChange = {this.props.handleChange}/>
+           <Header handleChange = {this.props.handleChange}/>
             <div  >
 
               {this.state.isOTPSent ? 
