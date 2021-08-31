@@ -233,13 +233,13 @@ exports.reset = (req,res) => {
   var transporter = nodemailer.createTransport({
     service: 'gmail',
       auth: {
-        user: 'vaishnavinadargi19@gmail.com',
-        pass: 'virat@18'
+        user: 'srkukade@mitaoe.ac.in',
+        pass: 'Redminote7s'
       }
     });
 
   var mailOptions = {
-    from: 'vaishnavinadargi19@gmail.com',
+    from: 'srkukade@mitaoe.ac.in',
     to: req.body.email,
     subject: 'OTP',
     text: ' Please use below OTP for changing your password.       '

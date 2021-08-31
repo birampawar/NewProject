@@ -45,7 +45,7 @@ class App extends Component {
     return (
         <div className="">
          { this.state.forgot == true ? 
-         <Forgot /> : 
+         <Forgot handleChange = {this.handleChange}/> : 
          this.state.Type === "employee" ?
           <Employee handleChange = {this.handleChange} propobj={this.state.EMPID} /> 
           : this.state.Type === "HR" ?
